@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-title',
@@ -7,11 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleComponent implements OnInit {
 
-  public saudacao: string = 'Augusto';
-  constructor() { }
+  @Input() saudacao: string = '';
+  constructor() {
+    console.log(`${this.saudacao} Constructor`);
+    
+  }
+
+  ngOnChanges(): void {
+    console.log(`${this.saudacao} onChanges`);
+    
+  }
 
   ngOnInit(): void {
-    this.saudacao = `Olá, ${this.saudacao}`;
+    console.log(`${this.saudacao} onInit`);
+    
   }
 
 }
